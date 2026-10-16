@@ -61,6 +61,7 @@ class DepthFirstSearch:
                         state = successor,
                         cost = c_n.cost + grid.individual_cost(c_n.state, action),
                         parent = c_n,
+                        action=action
                         )
                     
                     # Apply objective test
