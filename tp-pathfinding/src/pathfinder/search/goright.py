@@ -57,7 +57,7 @@ class GoRight:
             # Apply objective test
             if grid.objective_test(successor):
                 return Solution(son, reached)
-            
+
             # Continue with the son
             node = son
 

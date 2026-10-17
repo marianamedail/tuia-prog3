@@ -42,8 +42,6 @@ class UniformCostSearch:
                 successor = grid.result(n.state, action)
                 successor_cost = n.cost + grid.individual_cost(n.state, action)
 
-                print(f"Current node: {n.state}, Successor: {successor}, Cost: {successor_cost}")
-
                 if successor not in reached or successor_cost < reached[successor]:
                     new_node = Node(
                         "",
@@ -57,23 +55,3 @@ class UniformCostSearch:
                     frontier.add(new_node, successor_cost)
 
         return NoSolution(reached)
-
-'''
-function GRAPH-UCS(problema) return solución o no-solución
-    n₀ ← NODO(problema.estado-inicial, None, None, 0)
-    frontera ← ColaPrioridad()
-    frontera.encolar(n₀,n₀.costo)
-    alcanzados ← {n₀.estado: n₀.costo}
-    do
-        if frontera.vacía() then return no-solución
-        n ← frontera.desencolar()
-        if problema.test-objetivo(n.estado) then return solución(n)
-        forall a in problema.acciones(n.estado) do
-            s’ ← problema.resultado(n.estado, a)
-            c’ ← n.costo + problema.costo-individual(n.estado,a)
-            if s’ is not in alcanzados or c’ < alcanzados[s’] then
-                n’ ← Nodo(s’, n, a, c’)
-                alcanzados[s’] ← c’
-
-                frontera.encolar(n’,c’)
-'''

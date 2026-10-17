@@ -29,9 +29,6 @@ class BreadthFirstSearch:
         frontier = QueueFrontier()
         frontier.add(root)
 
-
-        print(f"reached: {reached}")
-
         # Initialize frontier with the root node
         while True:
             # Check if frontier is empty
@@ -40,12 +37,8 @@ class BreadthFirstSearch:
 
             n = frontier.remove()
 
-            # print(f"Current node: {n.state}")
-
             for action in grid.actions(n.state):
                 successor = grid.result(n.state, action)
-
-            # print(f"Successor: {successor}")
 
                 if successor not in reached:
                     new_node = Node(

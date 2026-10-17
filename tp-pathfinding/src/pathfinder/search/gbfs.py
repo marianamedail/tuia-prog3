@@ -22,10 +22,6 @@ class GreedyBestFirstSearch:
         reached = {}
         reached[root.state] = root.cost
 
-        # print(f"Root: {root}")
-        # print(f"Grid end: {grid.end}")
-        print(f"Manhattan: {grid.manhattan_distance(root.state)}")
-
         frontier = PriorityQueueFrontier()
         frontier.add(root, grid.manhattan_distance(root.state))
 
@@ -55,23 +51,3 @@ class GreedyBestFirstSearch:
                     frontier.add(new_node, grid.manhattan_distance(new_node.state))
 
         return NoSolution(reached)
-
-'''
-function GRAPH-GBFS(problema) return solución o fallo
-    n₀ ← NODO(problema.estado-inicial, None, None, 0)
-    frontera ← ColaPrioridad()
-    frontera.encolar(n₀, problema.h(n₀))
-    alcanzados ← {n₀.estado: n₀.costo}
-    do
-        if frontera.vacía() then return fallo
-        n ← frontera.desencolar()
-        if problema.test-objetivo(n.estado) then return solución(n)
-        forall a in problema.acciones(n.estado) do
-            s’ ← problema.resultado(n.estado, a)
-            c’ ← n.costo + problema.costo-individual(n.estado,a)
-            if s’ is not in alcanzados or c’ < alcanzados[s’] then
-                n’ ← Nodo(s’, n, a, c’)
-                alcanzados[s’] ← c’
-
-                frontera.encolar(n’, problema.h(n’))
-'''
