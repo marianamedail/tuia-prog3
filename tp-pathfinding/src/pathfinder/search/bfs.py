@@ -53,6 +53,7 @@ class BreadthFirstSearch:
                         state = successor,
                         cost = n.cost + grid.individual_cost(n.state, action),
                         parent = n,
+                        action = action
                     )
 
                     if grid.objective_test(new_node.state):
