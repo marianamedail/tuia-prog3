@@ -18,11 +18,11 @@ pos_inf = math.inf
 def estrategia_aleatoria(tateti: Tateti, estado: List[List[str]]) -> Tuple[int, int]:
     """
     Estrategia aleatoria: elige una acción al azar entre las disponibles.
-  
+
     Args:
         tateti: Instancia de la clase Tateti
         estado: Estado actual del tablero
-        
+
     Returns:
         Tuple[int, int]: Acción elegida (fila, columna)
 
@@ -34,7 +34,7 @@ def estrategia_aleatoria(tateti: Tateti, estado: List[List[str]]) -> Tuple[int, 
         raise ValueError("No hay acciones disponibles")
 
     print(f"Jugador: {tateti.jugador}")
-    
+
     return random.choice(acciones_disponibles)
 
 def MINIMAX_max(tateti: Tateti, estado: List[List[str]]):
@@ -64,14 +64,14 @@ def MINIMAX_min(tateti: Tateti, estado: List[List[str]]):
 def estrategia_minimax(tateti: Tateti, estado: List[List[str]]):
     """
     Estrategia minimax: elige la mejor acción usando el algoritmo minimax.
-    
+
     Args:
         tateti: Instancia de la clase Tateti
         estado: Estado actual del tablero
-        
+
     Returns:
         Tuple[int, int]: Acción elegida (fila, columna)
-        
+
     Raises:
         NotImplementedError: Hasta que el alumno implemente el algoritmo
     """
@@ -93,38 +93,3 @@ def estrategia_minimax(tateti: Tateti, estado: List[List[str]]):
             value = MINIMAX_max(tateti, tateti.resultado(estado, accion))
             sucs[accion] = value
         return min(sucs, key = sucs.get)
-
-
-# reached[root.state] = root.cost
-
-'''
-function MINIMAX(problema, estado) return acción
-    if problema.JUGADOR(estado) == MAX:
-        sucs ← {acción: MINIMAX-MIN(problema, problema.RESULTADO(estado, acción)) for acción in problema.ACCIONES(estado)}
-        return max(sucs, key=sucs.get) # obtiene la clave con el mayor valor
-
-    if problema.JUGADOR(estado) == MIN:
-        sucs ← {acción: MINIMAX-MAX(problema, problema.RESULTADO(estado, acción)) for acción in problema.ACCIONES(estado)}
-        return min(sucs, key=sucs.get) # obtiene la clave con el menor valor
-
-# Calcula recursivamente el valor minimax de un estado MAX
-function MINIMAX-MAX(problema, estado) return valor
-    if problema.TEST-TERMINAL(estado) then
-        return problema.UTILIDAD(estado,MAX)
-    valor ← -∞
-    forall acción in problema.ACCIONES(estado) do
-        sucesor ← problema.RESULTADO(estado, acción)
-        valor ← max(valor, MINIMAX-MIN(problema, sucesor)
-    return valor
-
-# Calcula recursivamente el valor minimax de un estado MIN
-function MINIMAX-MIN(problema, estado) return valor
-    if problema.TEST-TERMINAL(estado) then
-        return problema.UTILIDAD(estado,MAX)
-    valor ← +∞
-    forall acción in problema.ACCIONES(estado) do
-        sucesor ← problema.RESULTADO(estado, acción)
-        valor ← min(valor, MINIMAX-MAX(problema, sucesor)
-    return valor
-'''
-
